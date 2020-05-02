@@ -33,3 +33,11 @@
     justify-content: flex-end;
     padding: 1rem;
 }
+
+.price,.date{
+    color: #000000;
+}
+
+.desc{
+    color: #7C7C7C;
+}

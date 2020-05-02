@@ -9,10 +9,29 @@ class EventComponent extends Component {
     state={
         createEvent:false,
         event_data:[],
-        isLoading:false
+        isLoading:false,
+        detail_Modal:false,
+        event_title:'',
+        event_date:'',
+        event_price:'',
+        event_desc:'',
+        event_id:'',
+        booked:false
     };
 
     static contextType = AuthContext;
+
+    showDetails = (event) =>{
+        console.log(event);
+        this.setState({
+            detail_Modal:true,
+            event_title:event.title,
+            event_date:event.date,
+            event_price:event.price,
+            event_desc:event.description,
+            event_id:event._id,
+        })
+    };
 
     constructor(props) {
         super(props);
@@ -45,7 +64,7 @@ class EventComponent extends Component {
             }`
         }
 
-        fetch('http://localhost:3000/graphql',{
+        fetch('http://localhost:8000/graphql',{
             method:'POST',
             body:JSON.stringify(requestBody),
             headers:{
@@ -55,6 +74,8 @@ class EventComponent extends Component {
             .then(data=>{
                 // console.log(data.data.events)
                 this.setState({
+                    isLoading:false,
+                    detail_Modal:false,
                 event_data:data.data.events
             })})
             .catch(err=>console.log(err))
@@ -62,10 +83,16 @@ class EventComponent extends Component {
 
 
     componentDidMount() {
+        this.setState({
+            isLoading:true
+        });
         this.getAllEvents();
     }
 
     confirmEvent = () =>{
+        this.setState({
+            isLoading:true
+        });
         let title = this.titleEl.current.value;
         let description = this.descriptionEl.current.value;
         let price = +this.priceEl.current.value;
@@ -100,7 +127,7 @@ class EventComponent extends Component {
                         }      `
             };
 
-            fetch('http://localhost:3000/graphql',{
+            fetch('http://localhost:8000/graphql',{
                 method:'POST',
                 body:JSON.stringify(requestBody),
                 headers:{
@@ -121,14 +148,82 @@ class EventComponent extends Component {
 
     closeModel = () =>{
         this.setState({
-            createEvent:false
+            createEvent:false,
         })
     }
+
+    closeDetail = () =>{
+     this.setState({
+         detail_Modal:false
+     })
+    };
+
+    bookEvent = (eventId) =>{
+        if(!this.context.token){
+            alert("You need to Login before making a booking!!");
+        }
+        else{
+            let requestBody = {
+                query:`
+                    mutation{
+                        bookEvent(eventId:"${eventId}"){
+                        _id
+                        event{
+                        title
+                        description
+                        price
+                        date
+                        }
+                        user{
+                        _id
+                        email
+                        }
+                            }
+                        }      `
+            };
+
+            fetch('http://localhost:8000/graphql',{
+                method:'POST',
+                body:JSON.stringify(requestBody),
+                headers:{
+                    'Content-Type':'application/json',
+                    'Authorization':'Bearer '+this.context.token
+                }
+            }).then(res=>{
+                if(res.status!==201 && res.status!==200)
+                    throw new Error('Failed!');
+                return res.json();
+            }).then(resData=>{
+                this.getAllEvents();
+                this.setState({
+                    booked:true
+                })
+                setTimeout(() => {
+                    this.setState({
+                        booked:false
+                    })
+                }, 3000);
+
+
+            }).catch(err=>console.log(err));
+
+        }
+
+    };
+
 
     render() {
         return (
             <React.Fragment>
-                {this.state.createEvent && <BackDropComponent/>}
+                {this.state.createEvent || this.state.detail_Modal && <BackDropComponent/>}
+                { this.state.booked &&
+                    <div className="booking-success">
+                        <i className="fas fa-check-circle fa-lg"></i>
+                        <h4>Booking Successful</h4>
+                    </div>
+
+                }
+                {this.state.detail_Modal  && <Modal token={this.context.token} id={this.state.event_id} bookEvent={this.bookEvent} detail_Modal={this.state.detail_Modal} closeDetail={this.closeDetail} showDetail={true} title={this.state.event_title} price={this.state.event_price} date={this.state.event_date} desc={this.state.event_desc} />}
                 {this.state.createEvent && <Modal confirmEvent={this.confirmEvent} closeModal={this.closeModel} title="Add Event" canCancel canConfirm>
                     <form>
                         <div className="form-control">
@@ -153,12 +248,18 @@ class EventComponent extends Component {
                     <h2 style={{fontFamily:"inherit"}}>Create an Event !</h2>
                     <button className="btn" onClick={this.showEventModel}> Create Event</button>
                 </div>}
+                {this.state.isLoading ?
+                    <div className={"spinner"}>
+                        <div className="lds-dual-ring"/>
+                    </div>
+                :
                     <ul className="events__list">
                         {this.state.event_data.length>0 && this.state.event_data.map(event=>
-                            <EventItem key={event.id} event={event} authUserId={this.context.userId}/>
+                            <EventItem showDetail={this.showDetails} key={event.id} event={event} authUserId={this.context.userId}/>
                         )}
 
                     </ul>
+                }
             </React.Fragment>
         );
     }
