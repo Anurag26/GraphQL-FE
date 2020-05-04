@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff62def4-0245-45db-8f79-9e4b93fff6b7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Components/Bookings/Booking.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/AuthComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AuthComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/BookingsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Bookings/BookingsPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Events/EventComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Events/EventComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Events/EventItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Events/EventItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Events/Events.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Events/Events.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Modal/Modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Modal/Modal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Modal/Modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Modal/Modal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Bookings/BookingItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Bookings/BookingItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Bookings/BookingsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Bookings/BookingsPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +15,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -63,7 +57,7 @@
       <workItem from="1588176390869" duration="29876000" />
       <workItem from="1588300320694" duration="7446000" />
       <workItem from="1588364987340" duration="253000" />
-      <workItem from="1588373354567" duration="11169000" />
+      <workItem from="1588373354567" duration="17520000" />
     </task>
     <servers />
   </component>

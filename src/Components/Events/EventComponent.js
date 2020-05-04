@@ -166,7 +166,7 @@ class EventComponent extends Component {
             let requestBody = {
                 query:`
                     mutation{
-                        bookEvent(eventId:"${eventId}"){
+                        bookEvent(eventId:"Y"){
                         _id
                         event{
                         title
