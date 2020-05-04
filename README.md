@@ -1,68 +1,52 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# GraphQL + React Event Booking API
 
-## Available Scripts
+Backend: (https://github.com/Anurag26/GraphQL-BE)
 
-In the project directory, you can run:
+1. An Event booking app created using GraphQL.
+2. MongoDB
+3. NodeJS
+4. React.JS
 
-### `npm start`
+1.The application allows a user to login/create an account.
+2. If user is logged in they are allowed to creat events and book the events not created by them.
+3. If the user is not logged in, they can only view the events.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Used the Data Loader library introduced by Facebook, to batch and cache query calls and results respectively. 
+2. As any application might recurse into multiple calls to the backend for the same data, the data loader helps by batching all the network calls for a single node event loop and calling them all at once. 
+3. Moreover, it also checks if this call has already been made, in which case the Cached promise is returned.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Images of the application:
+### Without login one can only view events:
+![Without login one can only view events](https://i.imgur.com/DMyAjdK.png)
+### Sign-UP:
+![Sign-UP](https://i.imgur.com/esPRNoU.png)
+### Post Login, create an event option:
+![Post Login, create an event option](https://i.imgur.com/n6bxfte.png)
+### Create event form:
+![Create event form](https://i.imgur.com/Cwn9OXJ.png)
+### Self created events have no view details option:
+![Self created events have no view details option](https://i.imgur.com/n6bxfte.png)
+### View Details of an event and book if logged in:
+![View Details of an event and book if logged in](https://i.imgur.com/xkAzQDn.png)
+### Booking Successful Notification:
+![Booking Successful Notification](https://i.imgur.com/gqaWf1W.png)
+### View all bookings:
+![View all bookings](https://i.imgur.com/CsWtRfc.png)
+### Delete Bookings:
+![Delete Bookings](https://i.imgur.com/SAShAaQ.png)
 
-### `npm test`
+# Usage
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Install all dependencies
+```sh
+npm install
+```
 
-### `npm run build`
+Run the Client
+```sh
+npm run start
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This project was created with the youtube course of Academind and certain aspects of a full stack projects could be missing as the purpose of this project was purely an introduction to GraphQL and not build a full functional application.
