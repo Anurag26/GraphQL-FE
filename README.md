@@ -46,6 +46,15 @@ Run the Client
 ```sh
 npm run start
 ```
+OR
+```sh
+yarn add
+```
+
+Run the Client
+```sh
+yarn start
+```
 
 
 
