@@ -1,4 +1,4 @@
-# GraphQL +  React Event Booking API
+# GraphQL and and  React Event Booking API
 
 Backend: (https://github.com/Anurag26/GraphQL-BE)
 
