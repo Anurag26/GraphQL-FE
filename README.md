@@ -2,7 +2,7 @@
 
 Backend: (https://github.com/Anurag26/GraphQL-BE)
 
-1. An Event booking app created using GraphQL.
+1. An Event booking app created using GraphQL instead of the conventional REST.
 2. MongoDB
 3. NodeJS
 4. React.JS
